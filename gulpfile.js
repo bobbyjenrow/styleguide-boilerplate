@@ -52,16 +52,5 @@ gulp.task('css', () =>
           .pipe(browserSync.stream())
 );
 
-// Sass Task
-// gulp.task('sass', () =>
-//   gulp.src('./src/scss/**/*.scss')
-//           .pipe(sass())
-//           .pipe(sourcemaps.init())
-//           .pipe(postCSS(postCSSOptions))
-//           .pipe(sourcemaps.write('.'))
-//           .pipe(gulp.dest('./dist/scss'))
-//           .pipe(browserSync.stream())
-// );
-
 // Default Task
 gulp.task('default', ['serve']);
