@@ -31,37 +31,27 @@ const postCSSOptions = [
 ];
 
 // Browser Sync serve task
-gulp.task('serve', ['css'] ,()=>{
+gulp.task('serve', ['scss'] ,()=>{
   browserSync.init({
         server: "./styleguide"
     })
 
   // gulp.watch('./src/scss/**/*.scss', ['sass']);
-  gulp.watch('./src/css/**/*.css', ['css']);
+  gulp.watch('./src/scss/**/*.scss', ['scss']);
   gulp.watch('./src/index.html', ['html']);
   gulp.watch("./src/*").on('change', browserSync.reload);
 })
 
-// CSS Task
-gulp.task('css', () =>
-  gulp.src('./src/css/*.css')
+// Sass Task
+gulp.task('sass', () =>
+  gulp.src('./src/scss/**/*.scss')
+          .pipe(sass())
           .pipe(sourcemaps.init())
           .pipe(postCSS(postCSSOptions))
           .pipe(sourcemaps.write('.'))
-          .pipe(gulp.dest('./dist/css'))
+          .pipe(gulp.dest('./dist/scss'))
           .pipe(browserSync.stream())
 );
-
-// Sass Task
-// gulp.task('sass', () =>
-//   gulp.src('./src/scss/**/*.scss')
-//           .pipe(sass())
-//           .pipe(sourcemaps.init())
-//           .pipe(postCSS(postCSSOptions))
-//           .pipe(sourcemaps.write('.'))
-//           .pipe(gulp.dest('./dist/scss'))
-//           .pipe(browserSync.stream())
-// );
 
 // Default Task
 gulp.task('default', ['serve']);
