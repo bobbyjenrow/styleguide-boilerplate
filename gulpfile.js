@@ -1,5 +1,6 @@
 const gulp = require('gulp');
 const sass = require('gulp-sass');
+const glob = require('gulp-sass-glob');
 // Sourcemaps
 const sourcemaps = require('gulp-sourcemaps');
 // BrowserSync for autoreload
@@ -26,7 +27,7 @@ const postCSSOptions = [
     showCode: false,
   }),
   cssnano
-];g
+];
 
 // Browser Sync serve task
 gulp.task('serve', ['scss'] ,()=>{
@@ -42,7 +43,8 @@ gulp.task('serve', ['scss'] ,()=>{
 // Sass Task
 gulp.task('scss', () =>
   gulp.src('./src/scss/**/*.scss')
-          .pipe(sass())
+          .pipe(glob())
+          .pipe(sass({includePaths:['node_modules']}))
           .pipe(sourcemaps.init())
           .pipe(postCSS(postCSSOptions))
           .pipe(sourcemaps.write('.'))

@@ -12,9 +12,10 @@
     "gulp": "^3.9.1",
     "gulp-postcss": "^8.0.0",
     "gulp-sass": "^4.0.2",
+    "gulp-sass-glob": "^1.0.9",
     "gulp-sourcemaps": "^2.6.4",
-    "postcss-style-guide": "^0.14.0",
-    "postcss-preset-env": "^6.2.0"
+    "postcss-preset-env": "^6.2.0",
+    "postcss-style-guide": "^0.14.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
