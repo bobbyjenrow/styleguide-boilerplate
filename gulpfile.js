@@ -7,14 +7,12 @@ const browserSync = require('browser-sync');
 // Postcss for autoprefixer and other addons
 const postCSS = require('gulp-postcss');
 const styleguide = require('postcss-style-guide');
-const imports = require('postcss-easy-import');
 const env = require('postcss-preset-env');
 const cssnano = require('cssnano');
 // Load in paths and Config variables
 // const paths = require('./paths');
 
 const postCSSOptions = [
-  imports,
   env({
     stage: 3,
     features: {
@@ -23,12 +21,12 @@ const postCSSOptions = [
   }),
   styleguide({
     project: 'Project name',
-    src: './dist/css/styles.css',
+    src: './dist/styles/styles.css',
     dest: 'styleguide/index.html', // this is default
     showCode: false,
   }),
   cssnano
-];
+];g
 
 // Browser Sync serve task
 gulp.task('serve', ['scss'] ,()=>{
@@ -36,20 +34,19 @@ gulp.task('serve', ['scss'] ,()=>{
         server: "./styleguide"
     })
 
-  // gulp.watch('./src/scss/**/*.scss', ['sass']);
   gulp.watch('./src/scss/**/*.scss', ['scss']);
   gulp.watch('./src/index.html', ['html']);
   gulp.watch("./src/*").on('change', browserSync.reload);
 })
 
 // Sass Task
-gulp.task('sass', () =>
+gulp.task('scss', () =>
   gulp.src('./src/scss/**/*.scss')
           .pipe(sass())
           .pipe(sourcemaps.init())
           .pipe(postCSS(postCSSOptions))
           .pipe(sourcemaps.write('.'))
-          .pipe(gulp.dest('./dist/scss'))
+          .pipe(gulp.dest('./dist/styles'))
           .pipe(browserSync.stream())
 );
 
