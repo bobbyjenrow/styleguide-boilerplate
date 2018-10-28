@@ -12,6 +12,9 @@ Use the button classes on and `<a>`, `<button>`, `<input>` elements.
 <button class="button button--large button--blue">Blue Button</button>
 
     <button class="button button--large button--blue">Blue Button</button>
+<button class="button button--large button--fun">Fun Button</button>
+
+    <button class="button button--large button--fun">Fun Button</button>
 */
 .button {
     display: flex;
@@ -35,4 +38,9 @@ Use the button classes on and `<a>`, `<button>`, `<input>` elements.
 .button--blue {
     color: #fff;
     background-color: blue;
+}
+
+.button--fun {
+  color: #FFF;
+  background-color: var(--fun);
 }

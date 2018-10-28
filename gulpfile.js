@@ -16,14 +16,14 @@ const cssnano = require('cssnano');
 const postCSSOptions = [
   imports,
   env({
-    stage: 3,
+    stage: 2,
     features: {
       'nesting-rules': true,
     }
   }),
   styleguide({
     project: 'Project name',
-    src: './dist/css/styles.css',
+    src: './dist/styles/styles.css',
     dest: 'styleguide/index.html', // this is default
     showCode: false,
   }),
@@ -36,7 +36,6 @@ gulp.task('serve', ['css'] ,()=>{
         server: "./styleguide"
     })
 
-  // gulp.watch('./src/scss/**/*.scss', ['sass']);
   gulp.watch('./src/css/**/*.css', ['css']);
   gulp.watch('./src/index.html', ['html']);
   gulp.watch("./src/*").on('change', browserSync.reload);
@@ -48,7 +47,7 @@ gulp.task('css', () =>
           .pipe(sourcemaps.init())
           .pipe(postCSS(postCSSOptions))
           .pipe(sourcemaps.write('.'))
-          .pipe(gulp.dest('./dist/css'))
+          .pipe(gulp.dest('./dist/styles'))
           .pipe(browserSync.stream())
 );
 

@@ -1,0 +1,2 @@
+:root{--fun:#639}.button{display:flex;align-items:center;justify-content:center;border-radius:6px;cursor:pointer}.button--large{width:140px;height:40px;font-size:14px}.button--red{color:#fff;background-color:red}.button--blue{color:#fff;background-color:#00f}.button--fun{color:#fff;background-color:#639;background-color:var(--fun)}
+/*# sourceMappingURL=styles.css.map */
